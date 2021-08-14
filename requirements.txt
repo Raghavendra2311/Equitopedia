@@ -1,13 +1,12 @@
 streamlit
 pandas
 requests
-fbprophet.Prophet
-fbprophet.plot.plot_plotly
-plotly.graph_objs
+fbprophet
+plotly
 yfinance
-mftool.Mftool
+mftool
 datetime 
 cufflinks
 time
-yahoo_fin.stock_info
+yahoo_fin
 
