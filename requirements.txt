@@ -7,6 +7,5 @@ yfinance
 mftool
 datetime 
 cufflinks == 0.17.3
-time
 yahoo_fin
 
