@@ -1,30 +1,17 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import requests
-import psycopg2
 from fbprophet import Prophet
 from fbprophet.plot import plot_plotly
 from plotly import graph_objs as go
 import yfinance as yf
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 from mftool import Mftool
-import csv
 import datetime 
 import cufflinks as cf
-import plotly.offline
 cf.go_offline()
 cf.set_config_file(offline=False, world_readable=True)
 import time
-import seaborn as sns
-import os
-from IPython.display import clear_output
-import smtplib
 from yahoo_fin import stock_info as si
-import plotly.graph_objects as go
-from plotly.offline import plot
 primaryColor="#6eb52f"
 backgroundColor="#f0f0f5"
 secondaryBackgroundColor="#e0e0ef"
@@ -259,4 +246,6 @@ if option =='Prediction':
     st.write("Forecast components")
     fig2 = m.plot_components(forecast)
     st.write(fig2)
+    
+
     
