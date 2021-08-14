@@ -1,7 +1,13 @@
-streamlit == 0.82.0
-pandas == 1.2.4
-numpy == 1.19.5
-requests == 2.25.1
-
-
+streamlit
+import pandas
+import requests
+fbprophet.Prophet
+fbprophet.plot.plot_plotly
+from plotly import graph_objs
+import yfinance
+mftool.Mftool
+datetime 
+cufflinks
+time
+yahoo_fin.stock_info
 
