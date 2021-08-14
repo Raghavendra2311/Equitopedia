@@ -1,5 +1,6 @@
 streamlit
 pandas
+pystan
 requests == 2.25.1
 fbprophet
 plotly
