@@ -1,10 +1,10 @@
 streamlit
-import pandas
-import requests
+pandas
+requests
 fbprophet.Prophet
 fbprophet.plot.plot_plotly
-from plotly import graph_objs
-import yfinance
+plotly.graph_objs
+yfinance
 mftool.Mftool
 datetime 
 cufflinks
