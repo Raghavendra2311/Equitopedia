@@ -10,7 +10,6 @@ import datetime
 import cufflinks as cf
 cf.go_offline()
 cf.set_config_file(offline=False, world_readable=True)
-import time
 from yahoo_fin import stock_info as si
 primaryColor="#6eb52f"
 backgroundColor="#f0f0f5"
@@ -97,8 +96,6 @@ if option == 'Live Market Price':
     tickers = yf.Ticker(ticker)
     todays_data = tickers.history(period='1d')
     
-    
-    time.sleep(2)
     company= get_symbol(ticker)
     st.subheader(company)
     st.text(ticker)
