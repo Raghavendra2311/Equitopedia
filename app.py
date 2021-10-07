@@ -11,6 +11,10 @@ import cufflinks as cf
 cf.go_offline()
 cf.set_config_file(offline=False, world_readable=True)
 from yahoo_fin import stock_info as si
+import streamlit as st
+from cryptocmd import CmcScraper
+from plotly import graph_objs as go
+import time
 primaryColor="#6eb52f"
 backgroundColor="#f0f0f5"
 secondaryBackgroundColor="#e0e0ef"
@@ -37,11 +41,36 @@ ticker = st.sidebar.text_input("Enter Ticker",value="AAPL")
 
 
 
-option = st.sidebar.selectbox("Select Dashboard", ('Live Market Price','Company Info','Financials','Quarterly Analysis','Prediction','Mutual Funds'))
+option = st.sidebar.selectbox("Select Dashboard", ('Live Market Price','Company Info','Financials','Quarterly Analysis','Prediction','Mutual Funds','Cryptocurrency'))
 
 
 
 st.header(option)
+
+if option == 'Cryptocurrency':
+    selected_ticker = st.sidebar.text_input("Select a ticker for prediction (i.e. BTC, ETH, LINK, etc.)", "BTC")
+
+    ### Initialise scraper
+    @st.cache
+    def load_data(selected_ticker):
+    	init_scraper = CmcScraper(selected_ticker)
+    	crypto_df= init_scraper.get_dataframe()
+    	return crypto_df
+    
+    ### Load the data
+    data_load_state = st.sidebar.text('Loading data...')
+    crypto_df = load_data(selected_ticker)
+    st.write(crypto_df)
+    
+    ### Plot functions for regular & log plots
+    def plot_raw_data():
+    	fig = go.Figure()
+    	fig.add_trace(go.Scatter(x=crypto_df['Date'], y=crypto_df['Close'], name="Close"))
+    	fig.layout.update(title_text='Time Series data with Rangeslider', xaxis_rangeslider_visible=True)
+    	st.plotly_chart(fig)
+    
+    plot_raw_data()
+    
 
 if option =='Mutual Funds':
 
@@ -96,6 +125,8 @@ if option == 'Live Market Price':
     tickers = yf.Ticker(ticker)
     todays_data = tickers.history(period='1d')
     
+    
+    time.sleep(2)
     company= get_symbol(ticker)
     st.subheader(company)
     st.text(ticker)
@@ -243,6 +274,4 @@ if option =='Prediction':
     st.write("Forecast components")
     fig2 = m.plot_components(forecast)
     st.write(fig2)
-    
-
     
