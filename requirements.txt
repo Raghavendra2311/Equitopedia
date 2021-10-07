@@ -10,4 +10,4 @@ mftool
 datetime 
 cufflinks == 0.17.3
 yahoo_fin
-
+cryptocmd
