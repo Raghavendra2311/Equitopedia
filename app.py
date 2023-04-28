@@ -133,13 +133,7 @@ if option == 'Live Market Price':
     st.subheader("Current:")
     st.text(todays_data['Close'][0])
     
-    df= yf.Ticker(ticker).info['open']
-    st.subheader("Opening price: ")
-    st.text(df)
-
-    df= yf.Ticker(ticker).info['previousClose']
-    st.subheader("Previous Close: ")
-    st.text(df)
+  
 
     st.subheader("52 Weeks High")
     st.text(yf.Ticker(ticker).info['fiftyTwoWeekHigh'])
