@@ -134,11 +134,6 @@ if option == 'Live Market Price':
     st.text(todays_data['Close'][0])
     
   
-
-    st.subheader("52 Weeks High")
-    st.text(yf.Ticker(ticker).info['fiftyTwoWeekHigh'])
-    st.subheader("52 Weeks Low")
-    st.text(yf.Ticker(ticker).info['fiftyTwoWeekLow'])
     tickers = yf.Ticker(ticker)
     todays_data = tickers.history(period='1y')
     year_old_price = todays_data['Close'][0]
