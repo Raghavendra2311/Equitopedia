@@ -32,7 +32,7 @@ def get_symbol(symbol):
 
 ticker_lst = []
 
-st.title('Equitopedia')
+st.title('Equitopedia by Advik Maniyar')
 
 st.sidebar.title('Options')
 
