@@ -122,7 +122,7 @@ if option == 'Live Market Price':
     now = datetime.datetime.now()
     time1 = now.strftime("%H:%M:%S")
     tickers = yf.Ticker(ticker)
-    todays_data = tickers.history(period='1d')
+    todays_data = tickers.history()
     
     
     time.sleep(2)
