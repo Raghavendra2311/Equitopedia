@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
-from fbprophet import Prophet
-from fbprophet.plot import plot_plotly
+
 from plotly import graph_objs as go
 import yfinance as yf
 from mftool import Mftool
