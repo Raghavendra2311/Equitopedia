@@ -89,7 +89,7 @@ if option =='Mutual Funds':
     st.text(x_mf.to_string(header=False))
     yz = pd.DataFrame(mf.get_scheme_historical_nav(mf_number)['data'])
     yz = yz.astype({'date': 'datetime64[ns]', 'nav': 'float'}, copy=False)
-    yz = yz.set_index(['date'])[:15]
+    yz = yz.set_index(['date'])[:30]
     #fig = plt.plot(yz.set_index(['date'])[:7])
     #plt.show()
     #st.plotly_chart(fig)
