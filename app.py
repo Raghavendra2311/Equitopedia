@@ -163,7 +163,7 @@ if option == 'Company Info':
     company= get_symbol(ticker)
     st.subheader(company)
     st.text("Address:"+str(yf.Ticker(ticker).info['address1']+ ", "+ yf.Ticker(ticker).info['city']+ ", "+ yf.Ticker(ticker).info['country']+ " - "+ yf.Ticker(ticker).info['zip']))
-    st.text("Average Revenue for last 4 years(in ₹):"+str(yf.Ticker(ticker).info['totalRevenue']))
+    st.text("Average Revenue for last 4 years(in relevant currency):"+str(yf.Ticker(ticker).info['totalRevenue']))
     st.text("Sector:"+str(str(yf.Ticker(ticker).info['sector'])))
     st.text("Summary:")
     st.write(str(yf.Ticker(ticker).info['longBusinessSummary']))
