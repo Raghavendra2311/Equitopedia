@@ -100,10 +100,10 @@ if option =='Mutual Funds':
     
 if option =='Financials':
     st.subheader("Dividend:")
-    st.text(pd.DataFrame(yf.Ticker(ticker).dividends))
+    st.write(pd.DataFrame(yf.Ticker(ticker).dividends))
     st.subheader("Balance Sheet Of the Company")
     df_bs = pd.DataFrame(yf.Ticker(ticker).balance_sheet[:10])
-    st.write(pd.DataFrame(yf.Ticker(ticker).dividends))
+    st.text(df_bs)
     st.subheader("Cash Flow:")
     st.write(yf.Ticker(ticker).cashflow)
     st.subheader("Financials:")
