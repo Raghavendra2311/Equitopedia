@@ -169,7 +169,7 @@ if option == 'Company Info':
     st.text("Sector:")
     st.text(str(yf.Ticker(ticker).info['sector']))
     st.text("Summary:")
-    st.text(str(yf.Ticker(ticker).info['longBusinessSummary']))
+    st.write(str(yf.Ticker(ticker).info['longBusinessSummary']))
     st.subheader("Splits offered by the company:")
     st.write(pd.DataFrame(yf.Ticker(ticker).splits))
     st.subheader("Shareholders:")
