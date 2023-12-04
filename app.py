@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 
 from plotly import graph_objs as go
+from prophet.plot import plot_plotly, plot_components_plotly
 import yfinance as yf
 from mftool import Mftool
 import datetime 
@@ -220,15 +221,11 @@ if option =='Prediction':
     st.subheader('Forecast data')
     st.write(forecast.tail())
 
-    fig1 = go.Figure()
-    fig1.add_trace(go.Scatter(x=forecast['ds'], y=forecast['trend'], name="Actual Price"))
-    fig1.add_trace(go.Scatter(x=forecast['ds'], y=forecast['yhat'], name="Predicted Price"))
-    fig1.layout.update(title_text='Actual vs Predicted Prices', xaxis_rangeslider_visible=True)
-    st.plotly_chart(fig1) 
     
-    '''st.write(f'Forecast plot for {n_years} years')
-    fig1 = m.plot(forecast)
-    st.plotly_chart(fig1)'''
+    st.write(f'Forecast plot for {n_years} years')
+    fig1 = plot_plotly(m, forecast)
+    st.plotly_chart(fig1)
+    
     
     st.write("Forecast components")
     fig2 = m.plot_components(forecast)
