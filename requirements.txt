@@ -5,7 +5,7 @@ pystan == 2.19.1.1
 requests == 2.25.1
 prophet
 plotly
-yfinance
+yfinance==0.2.32
 mftool
 datetime 
 cufflinks == 0.17.3
