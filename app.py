@@ -220,6 +220,7 @@ if option =='Prediction':
     st.subheader('Forecast data')
     st.write(forecast.tail())
 
+    fig1 = go.Figure()
     fig1.add_trace(go.Scatter(x=forecast['ds'], y=forecast['trend'], name="Actual Price"))
     fig1.add_trace(go.Scatter(x=forecast['ds'], y=forecast['yhat'], name="Predicted Price"))
     fig1.layout.update(title_text='Actual vs Predicted Prices', xaxis_rangeslider_visible=True)
