@@ -122,7 +122,6 @@ if option =='Quarterly Analysis':
     st.write(yf.Ticker(ticker).quarterly_financials)
 
 if option == 'Live Market Price':
-    st.write(yf.Ticker(ticker).get_info())
     now = datetime.datetime.now()
     time1 = now.strftime("%H:%M:%S")
     tickers = yf.Ticker(ticker)
