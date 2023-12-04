@@ -124,57 +124,38 @@ if option == 'Live Market Price':
     time1 = now.strftime("%H:%M:%S")
     tickers = yf.Ticker(ticker)
     todays_data = tickers.history()
-    
-    
     time.sleep(2)
     company= get_symbol(ticker)
     st.subheader(company)
     st.text(ticker)
     st.subheader("Current:")
     st.text(todays_data['Close'][0])
-    
-  
     tickers = yf.Ticker(ticker)
     todays_data = tickers.history(period='1y')
     year_old_price = todays_data['Close'][0]
     current = si.get_live_price(ticker)
     st.text("52 week change: {:.2f} %".format(((current - year_old_price)*100)/year_old_price))
-    
-    
-    
     START = "2015-01-01"
     TODAY = datetime.datetime.today().strftime("%Y-%m-%d")
-    
-   
-    
-    
     selected_stock = ticker
-    
-    
+
     @st.cache
     def load_data(ticker):
         data = yf.download(ticker, START, TODAY)
         data.reset_index(inplace=True)
         return data
-    
-    	
-    
     data = load_data(selected_stock)
-  
-    
+
     st.subheader('Intraday Data')
     st.write(data.tail())
-    
     # Plot raw data
     def plot_raw_data():
     	fig = go.Figure()
     	fig.add_trace(go.Scatter(x=data['Date'], y=data['Open'], name="stock_open"))
     	fig.add_trace(go.Scatter(x=data['Date'], y=data['Close'], name="stock_close"))
     	fig.layout.update(title_text='Opening & Closing Price Chart', xaxis_rangeslider_visible=True)
-    	st.plotly_chart(fig)
-    	
+    	st.plotly_chart(fig)  	
     plot_raw_data()
-
 
 if option == 'Company Info':
     company= get_symbol(ticker)
@@ -190,19 +171,10 @@ if option == 'Company Info':
     st.subheader("Shareholders:")
     st.write(yf.Ticker(ticker).get_institutional_holders().head().drop('Date Reported',axis=1))
     
-
-    
-    
-
-    
-
-
 if option == 'Stocktwits':
     
     r = requests.get(f"https://api.stocktwits.com/api/2/streams/symbol/{ticker}.json")
-
     data = r.json()
-
     for message in data['messages']:
         st.image(message['user']['avatar_url'])
         st.write(message['user']['username'])
@@ -217,10 +189,7 @@ if option =='Prediction':
     
     START = "2015-01-01"
     TODAY = datetime.datetime.today().strftime("%Y-%m-%d")
-    
-   
-    
-    
+
     selected_stock = ticker
     
     n_years = st.slider('Years of prediction:', 1, 4)
@@ -233,16 +202,10 @@ if option =='Prediction':
         data.reset_index(inplace=True)
         return data
     
-    	
-    
     data = load_data(selected_stock)
-    
-    
-    
-    
+
     # Plot raw data
-   
-    
+  
     # Predict forecast with Prophet.
     df_train = data[['Date','Close']]
     df_train = df_train.rename(columns={"Date": "ds", "Close": "y"})
