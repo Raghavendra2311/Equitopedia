@@ -179,7 +179,7 @@ if option == 'Company Info':
     company= get_symbol(ticker)
     st.subheader(company)
     st.text("Average Revenue for last 4 years(in ₹):")
-    st.text(yf.Ticker(ticker).earnings['Revenue'].mean())
+    st.text(yf.Ticker(ticker).get_financials()['2023-09-30']['TotalRevenue'])
     st.text("Social Score:")
     st.text(str(yf.Ticker(ticker).sustainability.loc['socialScore']))
     st.text("Environment Score:")
