@@ -104,7 +104,7 @@ if option =='Financials':
     st.subheader("Dividend:")
     st.write(pd.DataFrame(yf.Ticker(ticker).dividends))
     st.subheader("Balance Sheet Of the Company")
-    df_bs = pd.DataFrame(yf.Ticker(ticker)balance_sheet())
+    df_bs = pd.DataFrame(yf.Ticker(ticker).balance_sheet())
     st.text(df_bs)
     st.subheader("Cash Flow:")
     st.write(yf.Ticker(ticker).cashflow)
