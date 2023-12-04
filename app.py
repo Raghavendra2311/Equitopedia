@@ -220,10 +220,14 @@ if option =='Prediction':
     st.subheader('Forecast data')
     st.write(forecast.tail())
 
-        
-    st.write(f'Forecast plot for {n_years} years')
+    fig1.add_trace(go.Scatter(x=forecast['ds'], y=forecast['trend'], name="Actual Price"))
+    fig1.add_trace(go.Scatter(x=forecast['ds'], y=forecast['yhat'], name="Predicted Price"))
+    fig1.layout.update(title_text='Actual vs Predicted Prices', xaxis_rangeslider_visible=True)
+    st.plotly_chart(fig1) 
+    
+    '''st.write(f'Forecast plot for {n_years} years')
     fig1 = m.plot(forecast)
-    st.plotly_chart(fig1)
+    st.plotly_chart(fig1)'''
     
     st.write("Forecast components")
     fig2 = m.plot_components(forecast)
