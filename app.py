@@ -42,7 +42,7 @@ ticker = st.sidebar.text_input("Enter Ticker",value="AAPL")
 
 
 
-option = st.sidebar.selectbox("Select Dashboard", ('Live Market Price','Company Info','Financials','Quarterly Analysis','Prediction','Mutual Funds','Cryptocurrency'))
+option = st.sidebar.selectbox("Select Dashboard", ('Live Market Price','Company Info','Financials','Quarterly Analysis','Prediction','Stocktwits','Mutual Funds','Cryptocurrency'))
 
 
 
